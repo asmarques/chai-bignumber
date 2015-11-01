@@ -1,0 +1,34 @@
+{
+  "name": "chai-bignumber",
+  "version": "0.9.0",
+  "description": "Chai assertions for the bignumber.js library",
+  "main": "chai-bignumber.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jshint ./*.js && ./node_modules/.bin/mocha ./test/*.js"
+  },
+  "devDependencies": {
+    "bignumber.js": "^2.1.0",
+    "mocha": "^2.3.3",
+    "chai": "^3.4.0",
+    "jshint": "^2.8.0"
+  },
+  "author": "António Marques <me@antoniomarques.eu>",
+  "license": "MIT",
+  "homepage": "https://github.com/asmarques/chai-bignumber",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/asmarques/chai-bignumber"
+  },
+  "keywords": [
+    "chai",
+    "test",
+    "arbitrary",
+    "precision",
+    "arithmetic",
+    "big",
+    "number",
+    "decimal",
+    "float",
+    "bignumber"
+  ]
+}
