@@ -1,4 +1,5 @@
 # chai-bignumber
+[![Build Status](https://travis-ci.org/asmarques/chai-bignumber.svg)](https://travis-ci.org/asmarques/chai-bignumber)
 
 Chai assertions for comparing numbers using the  [bignumber.js](https://github.com/MikeMcl/bignumber.js) library.
 
