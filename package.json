@@ -22,6 +22,8 @@
   "keywords": [
     "chai",
     "chai-plugin",
+    "math",
+    "browser",
     "test",
     "arbitrary",
     "precision",
