@@ -5,23 +5,34 @@ module.exports = function (chai, utils) {
     utils.flag(this, 'bignumber', true);
   });
 
-  var convert = function(value) {
+  var convert = function(value, dp, rm) {
+    var number;
+
     if (typeof value === 'string' || typeof value === 'number') {
-      return new BigNumber(value);
+      number = new BigNumber(value);
     } else if (value instanceof BigNumber) {
-      return value;
+      number = value;
     } else {
       new chai.Assertion(value).assert(false,
         'expected #{act} to be an instance of string, number or BigNumber');
     }
+
+    if (parseInt(dp) === dp) {
+      if (rm === undefined) {
+        rm = BigNumber.ROUND_HALF_UP;
+      }
+      number = number.round(dp, rm);
+    }
+
+    return number;
   };
 
   var override = function(fn) {
     return function (_super) {
-      return function(value) {
+      return function(value, dp, rm) {
         if (utils.flag(this, 'bignumber')) {
-          var expected = convert(value);
-          var actual = convert(this._obj);
+          var expected = convert(value, dp, rm);
+          var actual = convert(this._obj, dp, rm);
           fn.apply(this, [expected, actual]);
         } else {
           _super.apply(this, arguments);

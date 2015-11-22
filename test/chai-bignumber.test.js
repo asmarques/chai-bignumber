@@ -32,6 +32,33 @@ describe('chai-bignumber', function() {
       }
     });
 
+    it('should be equal when rounded', function() {
+      var tests = [
+        [10, 10],
+        ['10.25355977', 10.25355812],
+        [10, new BigNumber('10.000000000000000001')]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.equal(b, 5);
+      }
+    });
+
+    it('should be equal when rounded with specific rounding mode', function() {
+      var tests = [
+        ['10.28', 10.21],
+        [10.09, new BigNumber('10.000000000000000001')]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.equal(b, 1, BigNumber.ROUND_DOWN);
+      }
+    });
+
     it('should not be equal', function() {
       var tests = [
         [10, 11],
@@ -93,6 +120,33 @@ describe('chai-bignumber', function() {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.greaterThan(b);
+      }
+    });
+
+    it('should be greater than when rounded', function() {
+      var tests = [
+        [15, 10],
+        ['15.4281', 15.4271],
+        [new BigNumber('1.999999999999999999'), 1.998999]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.greaterThan(b, 3);
+      }
+    });
+
+    it('should be greater than when rounded with specific rounding mode', function() {
+      var tests = [
+        ['10.016', 10.009],
+        [10.001, new BigNumber('9.999999999999999999')]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.greaterThan(b, 2, BigNumber.ROUND_UP);
       }
     });
 
@@ -160,6 +214,36 @@ describe('chai-bignumber', function() {
       }
     });
 
+    it('should be greater than or equal to when rounded', function() {
+      var tests = [
+        [10, 10],
+        ['100.25356140', 100.25355912],
+        [10, new BigNumber('10.000000000000000001')],
+        [15, 10],
+        ['15.4279', 15.4274],
+        [new BigNumber('1.999999999999999999'), 1.999449]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.at.least(b, 3);
+      }
+    });
+
+    it('should be greater than or equal to when rounded with specific rounding mode', function() {
+      var tests = [
+        ['100.5', 100.499],
+        [1.995, new BigNumber('1.999999999999999999')]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.at.least(b, 2, BigNumber.ROUND_HALF_UP);
+      }
+    });
+
     it('should not be greater than or equal to', function() {
       var tests = [
         [10, 15],
@@ -224,6 +308,33 @@ describe('chai-bignumber', function() {
       }
     });
 
+    it('should be less than when rounded', function() {
+      var tests = [
+        [10, 15],
+        [15.4271, '15.4276'],
+        [1.999449, new BigNumber('1.999999999999999999')]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.lessThan(b, 3);
+      }
+    });
+
+    it('should be less than when rounded with specific rounding mode', function() {
+      var tests = [
+        [10.045, 10.046],
+        [1.555, new BigNumber('1.559999999999999999')]
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.lessThan(b, 2, BigNumber.ROUND_HALF_DOWN);
+      }
+    });
+
     it('should not be less than', function() {
       var tests = [
         [15, 10],
@@ -285,6 +396,36 @@ describe('chai-bignumber', function() {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.most(b);
+      }
+    });
+
+    it('should be less than or equal to when rounded', function() {
+      var tests = [
+        [10, 10],
+        ['100.25356140', 100.25355912],
+        [10, new BigNumber('10.000000000000000001')],
+        [10, 15],
+        [15.4274, '15.4279'],
+        [1.999449, new BigNumber('1.999999999999999999')],
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.at.most(b, 3);
+      }
+    });
+
+    it('should be less than or equal to when rounded with specific rounding mode', function() {
+      var tests = [
+        ['102.005', 102],
+        [10.005, new BigNumber('10.000000000000000001')],
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var b = tests[i][1];
+        a.should.be.bignumber.at.most(b, 2, BigNumber.ROUND_HALF_EVEN);
       }
     });
 
