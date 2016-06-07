@@ -2,7 +2,7 @@ var BigNumber = require('bignumber.js');
 var chai = require('chai');
 
 chai.should();
-chai.use(require('../chai-bignumber'));
+chai.use(require('../chai-bignumber')(BigNumber));
 chai.config.includeStack = true;
 
 describe('chai-bignumber', function() {
