@@ -4,7 +4,8 @@
   "description": "Chai assertions for comparing arbitrary-precision decimals using the bignumber.js library",
   "main": "chai-bignumber.js",
   "scripts": {
-    "test": "jshint ./*.js && mocha ./test/*.js"
+    "lint": "jshint *.js",
+    "test": "mocha test/*.js"
   },
   "devDependencies": {
     "bignumber.js": "2.3.0",
