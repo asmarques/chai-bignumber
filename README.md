@@ -13,7 +13,12 @@ npm install --save-dev chai-bignumber
 
 ```javascript
 var chai = require('chai');
-chai.use(require('chai-bignumber'));
+
+//use default BigNumber
+chai.use(require('chai-bignumber')());
+
+//use custom BigNumber
+chai.use(require('chai-bignumber')(BigNumber));
 ```
 
 ## Assertions
