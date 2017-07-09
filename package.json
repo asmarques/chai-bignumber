@@ -1,6 +1,6 @@
 {
   "name": "chai-bignumber",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Chai assertions for comparing arbitrary-precision decimals using the bignumber.js library",
   "main": "chai-bignumber.js",
   "scripts": {
@@ -9,9 +9,9 @@
   },
   "devDependencies": {
     "bignumber.js": "^4.0.2",
-    "chai": "3.5.0",
-    "jshint": "2.9.2",
-    "mocha": "2.5.3"
+    "chai": "^3.5.0",
+    "jshint": "^2.9.2",
+    "mocha": "^2.5.3"
   },
   "author": "António Marques <me@antoniomarques.eu>",
   "license": "MIT",
