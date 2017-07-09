@@ -12,7 +12,7 @@ module.exports = function(BigNumber){
 
       if (typeof value === 'string' || typeof value === 'number') {
         number = new BigNumber(value);
-      } else if (value instanceof BigNumber) {
+      } else if (value.isBigNumber) {
         number = value;
       } else {
         new chai.Assertion(value).assert(false,

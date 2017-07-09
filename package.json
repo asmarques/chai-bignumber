@@ -8,7 +8,7 @@
     "test": "mocha test/*.js"
   },
   "devDependencies": {
-    "bignumber.js": "2.3.0",
+    "bignumber.js": "^4.0.2",
     "chai": "3.5.0",
     "jshint": "2.9.2",
     "mocha": "2.5.3"
