@@ -7,12 +7,18 @@ module.exports = function(BigNumber){
       utils.flag(this, 'bignumber', true);
     });
 
+    var isBigNumber = function(object) {
+      return object.isBigNumber ||
+             object instanceof BigNumber ||
+             (object.constructor && object.constructor.name === 'BigNumber')
+    }
+
     var convert = function(value, dp, rm) {
       var number;
 
       if (typeof value === 'string' || typeof value === 'number') {
         number = new BigNumber(value);
-      } else if (value.isBigNumber || value instanceof BigNumber) {
+      } else if (isBigNumber(value)) {
         number = value;
       } else {
         new chai.Assertion(value).assert(false,
