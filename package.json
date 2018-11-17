@@ -9,9 +9,9 @@
   },
   "devDependencies": {
     "bignumber.js": "^8.0.1",
-    "chai": "^3.5.0",
+    "chai": "^4.2.0",
     "jshint": "^2.9.2",
-    "mocha": "^2.5.3"
+    "mocha": "^5.2.0"
   },
   "author": "António Marques <me@antoniomarques.eu>",
   "license": "MIT",
