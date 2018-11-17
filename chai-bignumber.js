@@ -1,4 +1,4 @@
-module.exports = function(BigNumber){
+module.exports = function (BigNumber) {
   BigNumber = BigNumber || require('bignumber.js');
   var round = BigNumber.prototype.round || BigNumber.prototype.decimalPlaces;
   var isEqualTo = BigNumber.prototype.isEqualTo || BigNumber.prototype.equals;
@@ -8,17 +8,17 @@ module.exports = function(BigNumber){
   var isLessThanOrEqualTo = BigNumber.prototype.isLessThanOrEqualTo || BigNumber.prototype.lessThanOrEqualTo;
 
   return function (chai, utils) {
-    chai.Assertion.addProperty('bignumber', function() {
+    chai.Assertion.addProperty('bignumber', function () {
       utils.flag(this, 'bignumber', true);
     });
 
-    var isBigNumber = function(object) {
+    var isBigNumber = function (object) {
       return object.isBigNumber ||
-             object instanceof BigNumber ||
-             (object.constructor && object.constructor.name === 'BigNumber')
+        object instanceof BigNumber ||
+        (object.constructor && object.constructor.name === 'BigNumber')
     }
 
-    var convert = function(value, dp, rm) {
+    var convert = function (value, dp, rm) {
       var number;
 
       if (typeof value === 'string' || typeof value === 'number') {
@@ -40,10 +40,10 @@ module.exports = function(BigNumber){
       return number;
     };
 
-    var overwriteMethods = function(names, fn) {
+    var overwriteMethods = function (names, fn) {
       for (var i = 0; i < names.length; i++) {
         chai.Assertion.overwriteMethod(names[i], function (original) {
-          return function(value, dp, rm) {
+          return function (value, dp, rm) {
             if (utils.flag(this, 'bignumber')) {
               var expected = convert(value, dp, rm);
               var actual = convert(this._obj, dp, rm);
@@ -57,7 +57,7 @@ module.exports = function(BigNumber){
     };
 
     // BigNumber.isEqualTo
-    overwriteMethods(['equal', 'equals', 'eq'], function(expected, actual) {
+    overwriteMethods(['equal', 'equals', 'eq'], function (expected, actual) {
       this.assert(
         isEqualTo.bind(expected)(actual),
         'expected #{act} to equal #{exp}',
@@ -68,7 +68,7 @@ module.exports = function(BigNumber){
     });
 
     // BigNumber.isGreaterThan
-    overwriteMethods(['above', 'gt', 'greaterThan'], function(expected, actual) {
+    overwriteMethods(['above', 'gt', 'greaterThan'], function (expected, actual) {
       this.assert(
         isGreaterThan.bind(actual)(expected),
         'expected #{act} to be greater than #{exp}',
@@ -79,7 +79,7 @@ module.exports = function(BigNumber){
     });
 
     // BigNumber.isGreaterThanOrEqualTo
-    overwriteMethods(['least', 'gte'], function(expected, actual) {
+    overwriteMethods(['least', 'gte'], function (expected, actual) {
       this.assert(
         isGreaterThanOrEqualTo.bind(actual)(expected),
         'expected #{act} to be greater than or equal to #{exp}',
@@ -90,7 +90,7 @@ module.exports = function(BigNumber){
     });
 
     // BigNumber.isLessThan
-    overwriteMethods(['below', 'lt', 'lessThan'], function(expected, actual) {
+    overwriteMethods(['below', 'lt', 'lessThan'], function (expected, actual) {
       this.assert(
         isLessThan.bind(actual)(expected),
         'expected #{act} to be less than #{exp}',
@@ -101,7 +101,7 @@ module.exports = function(BigNumber){
     });
 
     // BigNumber.isLessThanOrEqualTo
-    overwriteMethods(['most', 'lte'], function(expected, actual) {
+    overwriteMethods(['most', 'lte'], function (expected, actual) {
       this.assert(
         isLessThanOrEqualTo.bind(actual)(expected),
         'expected #{act} to be less than or equal to #{exp}',

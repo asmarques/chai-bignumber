@@ -5,11 +5,11 @@ chai.should();
 chai.use(require('../chai-bignumber')(BigNumber));
 chai.config.includeStack = true;
 
-describe('chai-bignumber', function() {
+describe('chai-bignumber', function () {
   var matchInvalidError = /to be an instance of string, number or BigNumber/;
 
-  describe('equal/equals/eq', function() {
-    it('should be equal', function() {
+  describe('equal/equals/eq', function () {
+    it('should be equal', function () {
       var tests = [
         [10, 10],
         ['10', 10],
@@ -32,7 +32,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be equal when rounded', function() {
+    it('should be equal when rounded', function () {
       var tests = [
         [10, 10],
         ['10.25355977', 10.25355812],
@@ -46,7 +46,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be equal when rounded with specific rounding mode', function() {
+    it('should be equal when rounded with specific rounding mode', function () {
       var tests = [
         ['10.28', 10.21],
         [10.09, new BigNumber('10.000000000000000001')]
@@ -59,7 +59,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be equal', function() {
+    it('should not be equal', function () {
       var tests = [
         [10, 11],
         ['11', 10],
@@ -82,25 +82,25 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if arguments are not string, number or BigNumber', function() {
+    it('should fail if arguments are not string, number or BigNumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function(){}, []]
+        [function () {}, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i][0];
         var b = tests[i][1];
-        (function() {
+        (function () {
           a.should.be.bignumber.equal(b);
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('above/gt/greaterThan', function() {
-    it('should be greater than', function() {
+  describe('above/gt/greaterThan', function () {
+    it('should be greater than', function () {
       var tests = [
         [15, 10],
         ['15', 10],
@@ -123,7 +123,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be greater than when rounded', function() {
+    it('should be greater than when rounded', function () {
       var tests = [
         [15, 10],
         ['15.4281', 15.4271],
@@ -137,7 +137,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be greater than when rounded with specific rounding mode', function() {
+    it('should be greater than when rounded with specific rounding mode', function () {
       var tests = [
         ['10.016', 10.009],
         [10.001, new BigNumber('9.999999999999999999')]
@@ -150,7 +150,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be greater than', function() {
+    it('should not be greater than', function () {
       var tests = [
         [10, 10],
         ['10', 10],
@@ -173,25 +173,25 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if arguments are not string, number or BigNumber', function() {
+    it('should fail if arguments are not string, number or BigNumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function(){}, []]
+        [function () {}, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i][0];
         var b = tests[i][1];
-        (function() {
+        (function () {
           a.should.be.bignumber.greaterThan(b);
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('least/gte', function() {
-    it('should be greater than or equal to', function() {
+  describe('least/gte', function () {
+    it('should be greater than or equal to', function () {
       var tests = [
         [15, 10],
         ['15', 10],
@@ -214,7 +214,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be greater than or equal to when rounded', function() {
+    it('should be greater than or equal to when rounded', function () {
       var tests = [
         [10, 10],
         ['100.25356140', 100.25355912],
@@ -231,7 +231,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be greater than or equal to when rounded with specific rounding mode', function() {
+    it('should be greater than or equal to when rounded with specific rounding mode', function () {
       var tests = [
         ['100.5', 100.499],
         [1.995, new BigNumber('1.999999999999999999')]
@@ -244,7 +244,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be greater than or equal to', function() {
+    it('should not be greater than or equal to', function () {
       var tests = [
         [10, 15],
         ['10', 15],
@@ -267,25 +267,25 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if arguments are not string, number or BigNumber', function() {
+    it('should fail if arguments are not string, number or BigNumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function(){}, []]
+        [function () {}, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i][0];
         var b = tests[i][1];
-        (function() {
+        (function () {
           a.should.not.be.bignumber.at.least(b);
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('below/lt/lessThan', function() {
-    it('should be less than', function() {
+  describe('below/lt/lessThan', function () {
+    it('should be less than', function () {
       var tests = [
         [10, 15],
         ['10', 15],
@@ -308,7 +308,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be less than when rounded', function() {
+    it('should be less than when rounded', function () {
       var tests = [
         [10, 15],
         [15.4271, '15.4276'],
@@ -322,7 +322,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be less than when rounded with specific rounding mode', function() {
+    it('should be less than when rounded with specific rounding mode', function () {
       var tests = [
         [10.045, 10.046],
         [1.555, new BigNumber('1.559999999999999999')]
@@ -335,7 +335,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be less than', function() {
+    it('should not be less than', function () {
       var tests = [
         [15, 10],
         ['15', 10],
@@ -358,25 +358,25 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if arguments are not string, number or BigNumber', function() {
+    it('should fail if arguments are not string, number or BigNumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function(){}, []]
+        [function () {}, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i][0];
         var b = tests[i][1];
-        (function() {
+        (function () {
           a.should.not.be.bignumber.lessThan(b);
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('most/lte', function() {
-    it('should be less than or equal to', function() {
+  describe('most/lte', function () {
+    it('should be less than or equal to', function () {
       var tests = [
         [10, 10],
         ['10', 10],
@@ -399,7 +399,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be less than or equal to when rounded', function() {
+    it('should be less than or equal to when rounded', function () {
       var tests = [
         [10, 10],
         ['100.25356140', 100.25355912],
@@ -416,7 +416,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should be less than or equal to when rounded with specific rounding mode', function() {
+    it('should be less than or equal to when rounded with specific rounding mode', function () {
       var tests = [
         ['102.005', 102],
         [10.005, new BigNumber('10.000000000000000001')],
@@ -429,7 +429,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be less than or equal to', function() {
+    it('should not be less than or equal to', function () {
       var tests = [
         [15, 10],
         ['15', 10],
@@ -452,25 +452,25 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if arguments are not string, number or BigNumber', function() {
+    it('should fail if arguments are not string, number or BigNumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function(){}, []]
+        [function () {}, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i][0];
         var b = tests[i][1];
-        (function() {
+        (function () {
           a.should.not.be.bignumber.most(b);
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('finite', function() {
-    it('should be finite', function() {
+  describe('finite', function () {
+    it('should be finite', function () {
       var tests = [
         -100.5,
         -100,
@@ -487,7 +487,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be finite', function() {
+    it('should not be finite', function () {
       var tests = [
         100.5 / 0,
         NaN,
@@ -503,24 +503,24 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if argument is not string, number or BigNumber', function() {
+    it('should fail if argument is not string, number or BigNumber', function () {
       var tests = [
         {},
         [],
-        function(){}
+        function () {}
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
-        (function() {
+        (function () {
           a.should.be.finite;
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('integer', function() {
-    it('should be integer', function() {
+  describe('integer', function () {
+    it('should be integer', function () {
       var tests = [
         0,
         100,
@@ -534,7 +534,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be integer', function() {
+    it('should not be integer', function () {
       var tests = [
         NaN,
         100.5,
@@ -551,24 +551,24 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if argument is not string, number or BigNumber', function() {
+    it('should fail if argument is not string, number or BigNumber', function () {
       var tests = [
         {},
         [],
-        function(){}
+        function () {}
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
-        (function() {
+        (function () {
           a.should.be.integer;
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('negative', function() {
-    it('should be negative', function() {
+  describe('negative', function () {
+    it('should be negative', function () {
       var tests = [
         -100,
         -100.50,
@@ -583,7 +583,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be negative', function() {
+    it('should not be negative', function () {
       var tests = [
         NaN,
         0,
@@ -601,24 +601,24 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if argument is not string, number or BigNumber', function() {
+    it('should fail if argument is not string, number or BigNumber', function () {
       var tests = [
         {},
         [],
-        function(){}
+        function () {}
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
-        (function() {
+        (function () {
           a.should.be.negative;
         }).should.throw(matchInvalidError);
       }
     });
   });
 
-  describe('zero', function() {
-    it('should be zero', function() {
+  describe('zero', function () {
+    it('should be zero', function () {
       var tests = [
         0,
         -0,
@@ -632,7 +632,7 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should not be zero', function() {
+    it('should not be zero', function () {
       var tests = [
         NaN,
         -100.50,
@@ -652,16 +652,16 @@ describe('chai-bignumber', function() {
       }
     });
 
-    it('should fail if argument is not string, number or BigNumber', function() {
+    it('should fail if argument is not string, number or BigNumber', function () {
       var tests = [
         {},
         [],
-        function(){}
+        function () {}
       ];
 
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
-        (function() {
+        (function () {
           a.should.be.zero;
         }).should.throw(matchInvalidError);
       }
