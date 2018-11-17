@@ -34,5 +34,8 @@
     "decimal",
     "float",
     "bignumber"
+  ],
+  "files": [
+    "chai-bignumber.js"
   ]
 }
