@@ -15,8 +15,8 @@ module.exports = function (BigNumber) {
     var isBigNumber = function (object) {
       return object.isBigNumber ||
         object instanceof BigNumber ||
-        (object.constructor && object.constructor.name === 'BigNumber')
-    }
+        (object.constructor && object.constructor.name === 'BigNumber');
+    };
 
     var convert = function (value, dp, rm) {
       var number;
@@ -41,18 +41,19 @@ module.exports = function (BigNumber) {
     };
 
     var overwriteMethods = function (names, fn) {
+      function overwriteMethod(original) {
+        return function (value, dp, rm) {
+          if (utils.flag(this, 'bignumber')) {
+            var expected = convert(value, dp, rm);
+            var actual = convert(this._obj, dp, rm);
+            fn.apply(this, [expected, actual]);
+          } else {
+            original.apply(this, arguments);
+          }
+        };
+      }
       for (var i = 0; i < names.length; i++) {
-        chai.Assertion.overwriteMethod(names[i], function (original) {
-          return function (value, dp, rm) {
-            if (utils.flag(this, 'bignumber')) {
-              var expected = convert(value, dp, rm);
-              var actual = convert(this._obj, dp, rm);
-              fn.apply(this, [expected, actual]);
-            } else {
-              original.apply(this, arguments);
-            }
-          };
-        });
+        chai.Assertion.overwriteMethod(names[i], overwriteMethod);
       }
     };
 
