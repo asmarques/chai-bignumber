@@ -1,5 +1,6 @@
 # chai-bignumber
-[![Build Status](https://travis-ci.org/asmarques/chai-bignumber.svg)](https://travis-ci.org/asmarques/chai-bignumber)
+
+![Build Status](https://github.com/asmarques/chai-bignumber/workflows/CI/badge.svg)
 
 Chai assertions for comparing arbitrary-precision decimals using the [bignumber.js](https://github.com/MikeMcl/bignumber.js) library.
 
