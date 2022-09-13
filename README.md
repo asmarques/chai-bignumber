@@ -29,9 +29,9 @@ builtin assertions if the `bignumber` property is explicitly set as part of
 the assertion chain:
 - equal/equals/eq
 - above/gt/greaterThan
-- least/gte
+- least/gte/greaterThanOrEqual
 - below/lt/lessThan
-- most/lte
+- most/lte/lessThanOrEqual
 
 The above methods have the following signature: `(value, dp, rm)`.
 Where `dp` is an optional argument which specifies the number of decimal places
