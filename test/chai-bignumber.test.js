@@ -1,5 +1,6 @@
 var BigNumber = require('bignumber.js');
 var chai = require('chai');
+var expect = require('chai').expect
 
 chai.should();
 chai.use(require('../chai-bignumber')(BigNumber));
@@ -29,6 +30,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.equal(b);
+        expect(a).to.be.bignumber.equal(b);
       }
     });
 
@@ -43,6 +45,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.equal(b, 5);
+        expect(a).to.be.bignumber.equal(b, 5);
       }
     });
 
@@ -56,6 +59,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.equal(b, 1, BigNumber.ROUND_DOWN);
+        expect(a).to.be.bignumber.equal(b, 1, BigNumber.ROUND_DOWN);
       }
     });
 
@@ -79,6 +83,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.not.be.bignumber.equal(b);
+        expect(a).not.to.be.bignumber.equal(b);
       }
     });
 
@@ -94,6 +99,9 @@ describe('chai-bignumber', function () {
         var b = tests[i][1];
         (function () {
           a.should.be.bignumber.equal(b);
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).to.be.bignumber.equal(b);
         }).should.throw(matchInvalidError);
       }
     });
@@ -120,6 +128,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.greaterThan(b);
+        expect(a).to.be.bignumber.greaterThan(b);
       }
     });
 
@@ -134,6 +143,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.greaterThan(b, 3);
+        expect(a).to.be.bignumber.greaterThan(b, 3);
       }
     });
 
@@ -147,6 +157,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.greaterThan(b, 2, BigNumber.ROUND_UP);
+        expect(a).to.be.bignumber.greaterThan(b, 2, BigNumber.ROUND_UP);
       }
     });
 
@@ -170,6 +181,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.not.be.bignumber.greaterThan(b);
+        expect(a).not.to.be.bignumber.greaterThan(b);
       }
     });
 
@@ -185,6 +197,9 @@ describe('chai-bignumber', function () {
         var b = tests[i][1];
         (function () {
           a.should.be.bignumber.greaterThan(b);
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).to.be.bignumber.greaterThan(b);
         }).should.throw(matchInvalidError);
       }
     });
@@ -211,6 +226,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.least(b);
+        expect(a).to.be.bignumber.at.least(b);
       }
     });
 
@@ -228,6 +244,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.least(b, 3);
+        expect(a).to.be.bignumber.at.least(b, 3);
       }
     });
 
@@ -241,6 +258,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.least(b, 2, BigNumber.ROUND_HALF_UP);
+        expect(a).to.be.bignumber.at.least(b, 2, BigNumber.ROUND_HALF_UP);
       }
     });
 
@@ -264,6 +282,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.not.be.bignumber.at.least(b);
+        expect(a).not.to.be.bignumber.at.least(b);
       }
     });
 
@@ -279,6 +298,9 @@ describe('chai-bignumber', function () {
         var b = tests[i][1];
         (function () {
           a.should.not.be.bignumber.at.least(b);
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).not.to.be.bignumber.at.least(b);
         }).should.throw(matchInvalidError);
       }
     });
@@ -305,6 +327,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.lessThan(b);
+        expect(a).to.be.bignumber.lessThan(b);
       }
     });
 
@@ -319,6 +342,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.lessThan(b, 3);
+        expect(a).to.be.bignumber.lessThan(b, 3);
       }
     });
 
@@ -332,6 +356,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.lessThan(b, 2, BigNumber.ROUND_HALF_DOWN);
+        expect(a).to.be.bignumber.lessThan(b, 2, BigNumber.ROUND_HALF_DOWN);
       }
     });
 
@@ -355,6 +380,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.not.be.bignumber.lessThan(b);
+        expect(a).not.to.be.bignumber.lessThan(b);
       }
     });
 
@@ -370,6 +396,9 @@ describe('chai-bignumber', function () {
         var b = tests[i][1];
         (function () {
           a.should.not.be.bignumber.lessThan(b);
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).not.to.be.bignumber.lessThan(b);
         }).should.throw(matchInvalidError);
       }
     });
@@ -396,6 +425,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.most(b);
+        expect(a).to.be.bignumber.at.most(b);
       }
     });
 
@@ -413,6 +443,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.most(b, 3);
+        expect(a).to.be.bignumber.at.most(b, 3);
       }
     });
 
@@ -426,6 +457,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.be.bignumber.at.most(b, 2, BigNumber.ROUND_HALF_EVEN);
+        expect(a).to.be.bignumber.at.most(b, 2, BigNumber.ROUND_HALF_EVEN);
       }
     });
 
@@ -449,6 +481,7 @@ describe('chai-bignumber', function () {
         var a = tests[i][0];
         var b = tests[i][1];
         a.should.not.be.bignumber.at.most(b);
+        expect(a).not.to.be.bignumber.at.most(b);
       }
     });
 
@@ -464,6 +497,9 @@ describe('chai-bignumber', function () {
         var b = tests[i][1];
         (function () {
           a.should.not.be.bignumber.most(b);
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).not.to.be.bignumber.most(b);
         }).should.throw(matchInvalidError);
       }
     });
@@ -484,6 +520,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.be.finite;
+        expect(a).to.be.finite;
       }
     });
 
@@ -500,6 +537,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.not.be.finite;
+        expect(a).not.to.be.finite;
       }
     });
 
@@ -514,6 +552,9 @@ describe('chai-bignumber', function () {
         var a = tests[i];
         (function () {
           a.should.be.finite;
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).to.be.finite;
         }).should.throw(matchInvalidError);
       }
     });
@@ -531,6 +572,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.be.an.integer;
+        expect(a).to.be.an.integer;
       }
     });
 
@@ -548,6 +590,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.not.be.an.integer;
+        expect(a).not.to.be.an.integer;
       }
     });
 
@@ -562,6 +605,9 @@ describe('chai-bignumber', function () {
         var a = tests[i];
         (function () {
           a.should.be.integer;
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).not.to.be.an.integer;
         }).should.throw(matchInvalidError);
       }
     });
@@ -580,6 +626,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.be.negative;
+        expect(a).to.be.negative;
       }
     });
 
@@ -598,6 +645,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.not.be.negative;
+        expect(a).not.to.be.negative;
       }
     });
 
@@ -612,6 +660,9 @@ describe('chai-bignumber', function () {
         var a = tests[i];
         (function () {
           a.should.be.negative;
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).to.be.negative;
         }).should.throw(matchInvalidError);
       }
     });
@@ -629,6 +680,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.be.zero;
+        expect(a).to.be.zero;
       }
     });
 
@@ -649,6 +701,7 @@ describe('chai-bignumber', function () {
       for (var i = 0; i < tests.length; i++) {
         var a = tests[i];
         a.should.not.be.zero;
+        expect(a).not.to.be.zero;
       }
     });
 
@@ -663,6 +716,9 @@ describe('chai-bignumber', function () {
         var a = tests[i];
         (function () {
           a.should.be.zero;
+        }).should.throw(matchInvalidError);
+        (function () {
+          expect(a).to.be.zero;
         }).should.throw(matchInvalidError);
       }
     });
