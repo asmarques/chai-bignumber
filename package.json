@@ -11,7 +11,7 @@
     "bignumber.js": "8",
     "chai": "4",
     "jshint": "2",
-    "mocha": "8"
+    "mocha": "10"
   },
   "author": "António Marques <me@antoniomarques.eu>",
   "license": "MIT",
