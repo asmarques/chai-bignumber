@@ -190,7 +190,7 @@ describe('chai-bignumber', function () {
     });
   });
 
-  describe('least/gte', function () {
+  describe('least/gte/greaterThanOrEqual', function () {
     it('should be greater than or equal to', function () {
       var tests = [
         [15, 10],
@@ -375,7 +375,7 @@ describe('chai-bignumber', function () {
     });
   });
 
-  describe('most/lte', function () {
+  describe('most/lte/lessThanOrEqual', function () {
     it('should be less than or equal to', function () {
       var tests = [
         [10, 10],

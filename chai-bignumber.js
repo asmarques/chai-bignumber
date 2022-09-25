@@ -80,7 +80,7 @@ module.exports = function (BigNumber) {
     });
 
     // BigNumber.isGreaterThanOrEqualTo
-    overwriteMethods(['least', 'gte'], function (expected, actual) {
+    overwriteMethods(['least', 'gte', 'greaterThanOrEqual'], function (expected, actual) {
       this.assert(
         isGreaterThanOrEqualTo.bind(actual)(expected),
         'expected #{act} to be greater than or equal to #{exp}',
@@ -102,7 +102,7 @@ module.exports = function (BigNumber) {
     });
 
     // BigNumber.isLessThanOrEqualTo
-    overwriteMethods(['most', 'lte'], function (expected, actual) {
+    overwriteMethods(['most', 'lte', 'lessThanOrEqual'], function (expected, actual) {
       this.assert(
         isLessThanOrEqualTo.bind(actual)(expected),
         'expected #{act} to be less than or equal to #{exp}',
