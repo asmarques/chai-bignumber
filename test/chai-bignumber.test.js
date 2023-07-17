@@ -91,7 +91,7 @@ describe('chai-bignumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function () {}, []]
+        [function () { }, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -189,7 +189,7 @@ describe('chai-bignumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function () {}, []]
+        [function () { }, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -290,7 +290,7 @@ describe('chai-bignumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function () {}, []]
+        [function () { }, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -388,7 +388,7 @@ describe('chai-bignumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function () {}, []]
+        [function () { }, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -489,7 +489,7 @@ describe('chai-bignumber', function () {
       var tests = [
         [{}, 1],
         [1, {}],
-        [function () {}, []]
+        [function () { }, []]
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -545,7 +545,7 @@ describe('chai-bignumber', function () {
       var tests = [
         {},
         [],
-        function () {}
+        function () { }
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -598,7 +598,7 @@ describe('chai-bignumber', function () {
       var tests = [
         {},
         [],
-        function () {}
+        function () { }
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -653,7 +653,7 @@ describe('chai-bignumber', function () {
       var tests = [
         {},
         [],
-        function () {}
+        function () { }
       ];
 
       for (var i = 0; i < tests.length; i++) {
@@ -709,7 +709,7 @@ describe('chai-bignumber', function () {
       var tests = [
         {},
         [],
-        function () {}
+        function () { }
       ];
 
       for (var i = 0; i < tests.length; i++) {
