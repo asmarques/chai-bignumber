@@ -1,11 +1,11 @@
 module.exports = function (BigNumber) {
   BigNumber = BigNumber || require('bignumber.js');
   var round = BigNumber.prototype.round || BigNumber.prototype.decimalPlaces;
-  var isEqualTo = BigNumber.prototype.isEqualTo || BigNumber.prototype.equals;
-  var isGreaterThan = BigNumber.prototype.isGreaterThan || BigNumber.prototype.greaterThan;
-  var isGreaterThanOrEqualTo = BigNumber.prototype.isGreaterThanOrEqualTo || BigNumber.prototype.greaterThanOrEqualTo;
-  var isLessThan = BigNumber.prototype.isLessThan || BigNumber.prototype.lessThan;
-  var isLessThanOrEqualTo = BigNumber.prototype.isLessThanOrEqualTo || BigNumber.prototype.lessThanOrEqualTo;
+  var isEqualTo = BigNumber.prototype.isEqualTo || BigNumber.prototype.equals || BigNumber.prototype.eq;
+  var isGreaterThan = BigNumber.prototype.isGreaterThan || BigNumber.prototype.greaterThan || BigNumber.prototype.gt;
+  var isGreaterThanOrEqualTo = BigNumber.prototype.isGreaterThanOrEqualTo || BigNumber.prototype.greaterThanOrEqualTo || BigNumber.prototype.gte;
+  var isLessThan = BigNumber.prototype.isLessThan || BigNumber.prototype.lessThan || BigNumber.prototype.lt;
+  var isLessThanOrEqualTo = BigNumber.prototype.isLessThanOrEqualTo || BigNumber.prototype.lessThanOrEqualTo || BigNumber.prototype.lte;
 
   return function (chai, utils) {
     chai.Assertion.addProperty('bignumber', function () {
@@ -13,9 +13,9 @@ module.exports = function (BigNumber) {
     });
 
     var isBigNumber = function (object) {
-      return object.isBigNumber ||
+      return (object.isBigNumber || object.isBN) ||
         object instanceof BigNumber ||
-        (object.constructor && object.constructor.name === 'BigNumber');
+        (object.constructor && object.constructor.name === BigNumber.name);
     };
 
     var convert = function (value, dp, rm) {
