@@ -723,4 +723,38 @@ describe('chai-bignumber', function () {
       }
     });
   });
+
+  describe('oneOf', function () {
+    it('should find number in array', function () {
+      var tests = [
+        [new BigNumber(0), [new BigNumber(0), null, undefined]],
+        [1, [1, new BigNumber(2), 5]],
+        ["3", [new BigNumber(3), 6, 7, "8"]],
+        [new BigNumber(4), [4, "10", new BigNumber(6)]],
+        [new BigNumber(5), ["5", new BigNumber(10)]],
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var l = tests[i][1];
+        a.should.be.bignumber.oneOf(l);
+        expect(a).to.be.bignumber.oneOf(l);
+      }
+    });
+
+    it('should not find number in array', function () {
+      var tests = [
+        [new BigNumber(0), []],
+        [10, [1, new BigNumber(2), 5]],
+        ["3", [new BigNumber(30), null, undefined]],
+      ];
+
+      for (var i = 0; i < tests.length; i++) {
+        var a = tests[i][0];
+        var l = tests[i][1];
+        a.should.not.be.bignumber.oneOf(l);
+        expect(a).to.not.be.bignumber.oneOf(l);
+      }
+    });
+  });
 });

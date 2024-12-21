@@ -6,6 +6,7 @@ module.exports = function (BigNumber) {
   var isGreaterThanOrEqualTo = BigNumber.prototype.isGreaterThanOrEqualTo || BigNumber.prototype.greaterThanOrEqualTo;
   var isLessThan = BigNumber.prototype.isLessThan || BigNumber.prototype.lessThan;
   var isLessThanOrEqualTo = BigNumber.prototype.isLessThanOrEqualTo || BigNumber.prototype.lessThanOrEqualTo;
+  var oneOf = BigNumber.prototype.oneOf
 
   return function (chai, utils) {
     chai.Assertion.addProperty('bignumber', function () {
@@ -155,5 +156,29 @@ module.exports = function (BigNumber) {
         value.toString()
       );
     });
+
+    // BigNumber.oneOf
+    chai.Assertion.overwriteMethod('oneOf', function (original) {
+      return function (list) {
+        if (utils.flag(this, 'bignumber')) {
+          var value = convert(this._obj);
+          var found = false
+          for (var i = 0; i < list.length; i++) {
+            if (value.isEqualTo(list[i])) {
+              found = true;
+            }
+          }
+          this.assert(
+            found,
+            'expected #{this} to be one of #{exp}',
+            'expected #{this} to not be one of #{exp}',
+            list
+          )
+        } else {
+          original.apply(this, arguments);
+        }
+      };
+    });
+
   };
 };
